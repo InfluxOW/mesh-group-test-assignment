@@ -1,5 +1,6 @@
 # For more information: https://laravel.com/docs/sail
-version: '3'
+version: '3.8'
+
 services:
     laravel.test:
         build:
@@ -55,6 +56,19 @@ services:
             test: ["CMD", "redis-cli", "ping"]
             retries: 3
             timeout: 5s
+    rabbitmq:
+        image: rabbitmq:3.9-management
+        environment:
+            RABBITMQ_DEFAULT_USER: '${RABBITMQ_USER}'
+            RABBITMQ_DEFAULT_PASSWORD: '${RABBITMQ_PASSWORD}'
+            RABBITMQ_DEFAULT_VHOST: '${RABBITMQ_VHOST}'
+        ports:
+            - '15672:15672'
+            - '5672:5672'
+        networks:
+            - sail
+        volumes:
+            - 'sail-rabbitmq:/rabbitmq'
 networks:
     sail:
         driver: bridge
@@ -62,4 +76,6 @@ volumes:
     sail-mariadb:
         driver: local
     sail-redis:
+        driver: local
+    sail-rabbitmq:
         driver: local
