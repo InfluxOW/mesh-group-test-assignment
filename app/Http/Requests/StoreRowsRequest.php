@@ -34,6 +34,4 @@ class StoreRowsRequest extends FormRequest
             'file' => ['required', sprintf('mimetypes:%s', implode(',', $fileMimeTypes))],
         ];
     }
-
-
 }

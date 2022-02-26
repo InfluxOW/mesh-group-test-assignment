@@ -31,9 +31,7 @@ class RowsController extends Controller
             ->limit($perPage)
             ->get()
             ->groupBy('date')
-            ->map(function (Collection $rows): JsonResource {
-                return RowResource::collection($rows);
-            });
+            ->map(fn (Collection $rows): JsonResource => RowResource::collection($rows));
 
         return response()->json(['items' => $rows]);
     }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\Row;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class RowResource extends JsonResource
 {

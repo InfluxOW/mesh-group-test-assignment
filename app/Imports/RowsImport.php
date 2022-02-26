@@ -87,7 +87,7 @@ class RowsImport implements ToModel, WithUpserts, WithUpsertColumns, WithBatchIn
     {
         return [
             BeforeImport::class => function (BeforeImport $event): void {
-                $this->totalRowsNumber = array_sum($event->getReader()->getTotalRows());
+                $this->totalRowsNumber = (int) array_sum($event->getReader()->getTotalRows());
             },
             AfterImport::class => function (): void {
                 $this->finishProgress();
