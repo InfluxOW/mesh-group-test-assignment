@@ -39,7 +39,7 @@ class RowsImport implements ToModel, WithUpserts, WithUpsertColumns, WithBatchIn
         $this->updateProgress();
 
         return new Row([
-            'id' => (int) $row['id'],
+            'id' => $row['id'],
             'name' => $row['name'],
             'date' => $row['date'],
         ]);
